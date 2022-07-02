@@ -32,3 +32,5 @@
 *.app
 
 PCB/HRS/HRS-backups/
+fp-lib-table
+fp-info-cache
