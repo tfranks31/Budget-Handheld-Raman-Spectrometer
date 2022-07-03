@@ -1,9 +1,11 @@
 #pragma once
 
+#include <stdint.h>
+
 /**
  * Class for the status led used by the system.
  */
-class led 
+class Led
 {
 public:
 
@@ -11,7 +13,7 @@ public:
      * Constructor for the LED.
      * @param pinNum The pin number the LED is hooked up to.
      */
-    void led(uint8 pinNum);
+    void led(uint8_t pinNum);
 
     /**
      * Initialize the LED.
@@ -19,15 +21,10 @@ public:
     void init();
 
     /**
-     * Bring the LED offline.
-     */
-    void bringOffline();
-
-    /**
      * Set the LED brightness.
      * @param brightness The brightness to set the LED to. 255 for max brighness, 0 for off.
      */
-    void setBrightness(uint8 brightness);
+    void setBrightness(uint8_t brightness);
 
     /**
      * Turn the LED on.
