@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <Adafruit_I2CDevice.h>
-#include <modules/led.hpp>
+#include <modules/LED.hpp>
 
 void setup() {
   // put your setup code here, to run once:

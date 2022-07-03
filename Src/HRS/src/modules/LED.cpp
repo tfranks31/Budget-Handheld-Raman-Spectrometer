@@ -1,20 +1,20 @@
 #include <Arduino.h>
-#include <modules/led.hpp>
+#include <modules/LED.hpp>
 
-void Led::led(uint8_t pinNum)
+LED::LED(uint8_t pinNum)
 {
     this->pinNum = pinNum;
     isOn = false;
     brightness = 0;
 }
 
-void Led::init()
+void LED::init()
 {
     pinMode(pinNum, OUTPUT);
     turnOff();
 }
 
-void Led::setBrightness(uint8_t brightness)
+void LED::setBrightness(uint8_t brightness)
 {
     this->brightness = brightness;
 
@@ -25,19 +25,19 @@ void Led::setBrightness(uint8_t brightness)
     }
 }
 
-void Led::turnOn()
+void LED::turnOn()
 {
     analogWrite(pinNum, brightness);
     isOn = true;
 }
 
-void Led::turnOff()
+void LED::turnOff()
 {
     analogWrite(pinNum, 0);
     isOn = false;
 }
 
-bool Led::getIsOn()
+bool LED::getIsOn()
 {
     return isOn;
 }

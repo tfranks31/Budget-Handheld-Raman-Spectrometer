@@ -3,9 +3,9 @@
 #include <stdint.h>
 
 /**
- * Class for the status led used by the system.
+ * Class for the status LED used by the system.
  */
-class Led
+class LED
 {
 public:
 
@@ -13,7 +13,7 @@ public:
      * Constructor for the LED.
      * @param pinNum The pin number the LED is hooked up to.
      */
-    void led(uint8_t pinNum);
+    LED(uint8_t pinNum);
 
     /**
      * Initialize the LED.
