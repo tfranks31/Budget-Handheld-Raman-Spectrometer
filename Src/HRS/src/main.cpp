@@ -7,7 +7,7 @@ void setup()
 {
     LEDController* controller = new LEDController(0);
     controller->bringOnline();
-    controller->runErrorMode();
+    controller->runScanningMode();
 }
 
 void loop()

@@ -1,26 +1,39 @@
 #pragma once
 
+#include <IntervalTimer.h>
 #include <modules/LED.hpp>
 #include <stdint.h>
-#include <IntervalTimer.h>
-
-#define MAX_BRIGHTNESS 20
-#define HEARTBEAT_LONG_TIMEOUT 5000000
-#define HEARTBEAT_SHORT_TIMEOUT 100000
-#define MAX_NUM_BEATS 2
-#define FADE_RATE 50000
-#define ERROR_TOGGLE 1000000
 
 /**
- * Different LED modes that correspond with different LED patterns.
+ * The maximum brightness the LED will go to (0-255).
  */
-enum LEDMode
-{
-    Off,
-    Idle,
-    Scan,
-    Error
-};
+#define MAX_BRIGHTNESS 20
+
+/**
+ * The time period between the groups of LED heartbeats.
+ */
+#define HEARTBEAT_LONG_RATE 5000000 // us
+
+/**
+ * The time period between the individual LED heartbeats.
+ */
+#define HEARTBEAT_SHORT_RATE 100000 // us
+
+/**
+ * How quickly to increment or decrement the LED brightness.
+ */
+#define FADE_RATE 100000    // us
+
+/**
+ * How quickly to toggle the LED when in error mode.
+ */
+#define TOGGLE_RATE 1000000 // us
+
+/**
+ * The maximum number of heartbeats in a group 
+ * (Heartbeat is a single on and off flash).
+ */
+#define MAX_NUM_BEATS 2
 
 /**
  * Class used to control the status LED on the system.
@@ -80,19 +93,9 @@ private:
     static IntervalTimer* timer;
 
     /**
-     * The mode that the LED is being commanded with.
-     */
-    static LEDMode mode;
-
-    /**
      * If the LED is fading, whether or not to fade upwards
      */
     static bool fadeUp;
-
-    /**
-     * If the LED is doing a heart beat, whether or not 
-     */
-    static bool longPause;
 
     /**
      * Track the number of heart beats
@@ -100,7 +103,17 @@ private:
     static uint8_t numBeats;
 
     /**
-     * Update the LED based on the selected mode. Used by the timer. 
+     * Make the LED flash like a heartbeat.
      */
-    static void updateLED();
+    static void heartbeatLED();
+
+    /**
+     * Make the LED fade in and out.
+     */
+    static void fadeLED();
+
+    /**
+     * Toggle the LED state.
+     */
+    static void toggleLED();
 };
