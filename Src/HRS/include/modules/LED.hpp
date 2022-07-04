@@ -21,6 +21,11 @@ public:
     void init();
 
     /**
+     * Get the set brightness of the LED
+     */
+    uint8_t getBrightness();
+
+    /**
      * Set the LED brightness.
      * @param brightness The brightness to set the LED to. 255 for max brighness, 0 for off.
      */

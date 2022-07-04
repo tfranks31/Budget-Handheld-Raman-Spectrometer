@@ -14,6 +14,11 @@ void LED::init()
     turnOff();
 }
 
+uint8_t LED::getBrightness()
+{
+    return brightness;
+}
+
 void LED::setBrightness(uint8_t brightness)
 {
     this->brightness = brightness;

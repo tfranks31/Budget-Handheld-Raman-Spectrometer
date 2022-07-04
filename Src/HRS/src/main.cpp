@@ -3,10 +3,14 @@
 #include <Adafruit_I2CDevice.h>
 #include <module_controllers/LEDController.hpp>
 
-void setup() {
-  // put your setup code here, to run once:
+void setup()
+{
+    LEDController* controller = new LEDController(0);
+    controller->bringOnline();
+    controller->runErrorMode();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop()
+{
+
 }

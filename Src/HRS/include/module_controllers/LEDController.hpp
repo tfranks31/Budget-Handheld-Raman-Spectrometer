@@ -4,7 +4,12 @@
 #include <stdint.h>
 #include <IntervalTimer.h>
 
-#define MAX_BRIGHTNESS 100
+#define MAX_BRIGHTNESS 20
+#define HEARTBEAT_LONG_TIMEOUT 5000000
+#define HEARTBEAT_SHORT_TIMEOUT 100000
+#define MAX_NUM_BEATS 2
+#define FADE_RATE 50000
+#define ERROR_TOGGLE 1000000
 
 /**
  * Different LED modes that correspond with different LED patterns.
@@ -13,8 +18,7 @@ enum LEDMode
 {
     Off,
     Idle,
-    ScanHigh,
-    ScanLow,
+    Scan,
     Error
 };
 
@@ -68,20 +72,35 @@ private:
     /**
      * The system's status LED.
      */
-    LED* statusLED;
+    static LED* statusLED;
 
     /**
      * The interval timer used to implement LED modes.
      */
-    IntervalTimer* timer;
+    static IntervalTimer* timer;
 
     /**
      * The mode that the LED is being commanded with.
      */
-    LEDMode mode;
+    static LEDMode mode;
+
+    /**
+     * If the LED is fading, whether or not to fade upwards
+     */
+    static bool fadeUp;
+
+    /**
+     * If the LED is doing a heart beat, whether or not 
+     */
+    static bool longPause;
+
+    /**
+     * Track the number of heart beats
+     */
+    static uint8_t numBeats;
 
     /**
      * Update the LED based on the selected mode. Used by the timer. 
      */
-    void updateLED();
+    static void updateLED();
 };
