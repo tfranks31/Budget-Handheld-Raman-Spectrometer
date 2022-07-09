@@ -42,5 +42,5 @@ private:
     /**
      * The laser used for scanning.
      */
-    Laser laser;
+    Laser* laser;
 };
