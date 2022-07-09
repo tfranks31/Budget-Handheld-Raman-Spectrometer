@@ -22,6 +22,16 @@ public:
     ~LaserController();
 
     /**
+     * Bring the laser online.
+     */
+    void bringOnline();
+
+    /**
+     * Bring the laser offline.
+     */
+    void bringOffline();
+
+    /**
      * Turn on the laser.
      */
     void turnOn();

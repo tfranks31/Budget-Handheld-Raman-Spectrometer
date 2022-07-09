@@ -10,6 +10,11 @@ LaserController::~LaserController()
     delete laser;
 }
 
+void LaserController::bringOnline()
+{
+    laser->init();
+}
+
 void LaserController::turnOn()
 {
     laser->turnOn();
