@@ -6,13 +6,14 @@ Joystick::Joystick(uint8_t xPinNum, uint8_t yPinNum, uint8_t buttonPinNum)
     this->xPinNum = xPinNum;
     this->yPinNum = yPinNum;
     this->buttonPinNum = buttonPinNum;
-    clearButtonPress();
 }
 
 void Joystick::init()
 {
     // Analog pins do not need to be declared as inputs
     pinMode(buttonPinNum, INPUT);
+    clearButtonPress();
+    attachInterrupt(buttonPinNum, handleButtonPress, RISING);
 }
 
 uint16_t Joystick::getXPos()
