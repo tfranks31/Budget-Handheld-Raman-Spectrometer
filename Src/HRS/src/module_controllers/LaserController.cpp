@@ -15,6 +15,11 @@ void LaserController::bringOnline()
     laser->init();
 }
 
+void LaserController::bringOffline()
+{
+    turnOff();
+}
+
 void LaserController::turnOn()
 {
     laser->turnOn();
