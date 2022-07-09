@@ -44,6 +44,7 @@ public:
 
     /**
      * Constructor for the LEDController.
+     * @param pinNum The pin number the LED is hooked up to.
      */
     LEDController(uint8_t pinNum);
 
