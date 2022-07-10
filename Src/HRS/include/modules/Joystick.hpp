@@ -24,16 +24,20 @@ public:
 
     /**
      * Get the joystick's x position.
+     * @returns The x position of the joystick.
      */
     uint16_t getXPos();
 
     /**
      * Get the joystick's y position.
+     * @returns The y position of the joystick.
      */
     uint16_t getYPos();
 
     /**
      * Get whether or not the button was pressed since the last clear.
+     * @returns True if the button was pressed since the last clear, false if
+     * not.
      */
     bool getButtonPressed();
 
