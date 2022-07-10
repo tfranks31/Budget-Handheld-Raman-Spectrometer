@@ -26,16 +26,16 @@ HorizontalMovement JoystickController::getHorizontalMovement()
     // Check each of the previousX states to determine the movement
     if (previousX == CENTER)
     {
-        // Moved from Center to Right
+        // Moved from Center to Left
         if (currentX > CENTER_UPPER_THRESHOLD)
         {
-            result = CENTER_RIGHT;
+            result = CENTER_LEFT;
             previousX = UPPER;
         }
-        // Moved from Center to Left
+        // Moved from Center to Right
         else if (currentX < CENTER_LOWER_THRESHOLD)
         {
-            result = CENTER_LEFT;
+            result = CENTER_RIGHT;
             previousX = LOWER;
         }
         // Stayed in the Center
@@ -46,17 +46,17 @@ HorizontalMovement JoystickController::getHorizontalMovement()
     }
     else if (previousX == UPPER)
     {
-        // Moved from Right to Left
+        // Moved from Left to Right
         if (currentX < UPPER_LOWER_THRESHOLD) 
         {
-            result = RIGHT_LEFT;
+            result = LEFT_RIGHT;
             // Determine how far moved to determine next state
             previousX = (currentX < CENTER_LOWER_THRESHOLD) ? LOWER : CENTER;
         }
         // Stayed at Right
         else
         {
-            result = RIGHT_RIGHT;
+            result = LEFT_LEFT;
         }
     }
     else    // previousX == LOWER
@@ -64,9 +64,9 @@ HorizontalMovement JoystickController::getHorizontalMovement()
         // Moved from Left to Right
         if (currentX > LOWER_UPPER_THRESHOLD) 
         {
-            result = LEFT_RIGHT;
+            result = RIGHT_LEFT;
             // Determine how far moved to determine next state
-            previousX = (currentX < CENTER_UPPER_THRESHOLD) ? UPPER : CENTER;
+            previousX = (currentX > CENTER_UPPER_THRESHOLD) ? UPPER : CENTER;
         }
         // Stayed at Left
         else
@@ -89,13 +89,13 @@ VerticalMovement JoystickController::getVerticalMovement()
         // Moved from the Center to Down
         if (currentY > CENTER_UPPER_THRESHOLD)
         {
-            result = CENTER_DOWN;
+            result = CENTER_UP;
             previousY = UPPER;
         }
         // Moved from the Center to UP
         else if (currentY < CENTER_LOWER_THRESHOLD)
         {
-            result = CENTER_UP;
+            result = CENTER_DOWN;
             previousY = LOWER;
         }
         // Stayed at the Center
@@ -109,14 +109,14 @@ VerticalMovement JoystickController::getVerticalMovement()
         // Moved from Down to Up
         if (currentY < UPPER_LOWER_THRESHOLD) 
         {
-            result = DOWN_UP;
+            result = UP_DOWN;
             // Determine how far moved to determine next state
             previousY = (currentY < CENTER_LOWER_THRESHOLD) ? LOWER : CENTER;
         }
         // Stayed Down
         else
         {
-            result = DOWN_DOWN;
+            result = UP_UP;
         }
     }
     else    // previousX == LOWER
@@ -124,14 +124,14 @@ VerticalMovement JoystickController::getVerticalMovement()
         // Moved from Up to Down
         if (currentY > LOWER_UPPER_THRESHOLD) 
         {
-            result = UP_DOWN;
+            result = DOWN_UP;
             // Determine how far moved to determine next state
-            previousY = (currentY < CENTER_UPPER_THRESHOLD) ? UPPER : CENTER;
+            previousY = (currentY > CENTER_UPPER_THRESHOLD) ? UPPER : CENTER;
         }
         // Stayed Up
         else
         {
-            result = UP_UP;
+            result = DOWN_DOWN;
         }
     }
 

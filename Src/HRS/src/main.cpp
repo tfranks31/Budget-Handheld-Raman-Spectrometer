@@ -22,7 +22,9 @@ void setup()
 
 void loop()
 {
+    Serial.print("Hor:  ");
     Serial.println(jcntr->getHorizontalMovement());
+    Serial.print("Vert: ");
     Serial.println(jcntr->getVerticalMovement());
     Serial.println(jcntr->getButtonPressed());
     Serial.println();
