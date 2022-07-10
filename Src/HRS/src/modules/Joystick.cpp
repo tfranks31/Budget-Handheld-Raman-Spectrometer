@@ -2,13 +2,20 @@
 #include <modules/Joystick.hpp>
 
 bool Joystick::wasButtonPressed;
+uint8_t Joystick::buttonPinNum;
+IntervalTimer* Joystick::timer;
 
 Joystick::Joystick(uint8_t xPinNum, uint8_t yPinNum, uint8_t buttonPinNum)
 {
     this->xPinNum = xPinNum;
     this->yPinNum = yPinNum;
     this->buttonPinNum = buttonPinNum;
-    wasButtonPressed = false;
+    timer = new IntervalTimer();
+}
+
+Joystick::~Joystick()
+{
+    delete timer;
 }
 
 void Joystick::init()
@@ -41,5 +48,15 @@ void Joystick::clearButtonPress()
 
 void Joystick::handleButtonPress()
 {
-    wasButtonPressed = true;
+    timer->begin(confirmButtonPress, 500);
+}
+
+void Joystick::confirmButtonPress()
+{
+    if (digitalRead(buttonPinNum) == LOW)
+    {
+        wasButtonPressed = true;
+    }
+
+    timer->end();
 }

@@ -27,5 +27,5 @@ void loop()
     Serial.println(jcntr->getButtonPressed());
     Serial.println();
     jcntr->clearButtonPressed();
-    delay(1000);
+    delay(500);
 }

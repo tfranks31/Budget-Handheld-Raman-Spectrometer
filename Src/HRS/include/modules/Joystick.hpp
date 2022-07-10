@@ -1,5 +1,6 @@
 #pragma once
 
+#include <IntervalTimer.h>
 #include <stdint.h>
 
 /**
@@ -16,6 +17,11 @@ public:
      * @param buttonPinNum The pin number that the button is hooked up to.
      */
     Joystick(uint8_t xPinNum, uint8_t yPinNum, uint8_t buttonPinNum);
+
+    /**
+     * Destructor for the joystick module.
+     */
+    ~Joystick();
 
     /**
      * Initialize the joystick module.
@@ -61,15 +67,25 @@ private:
     /**
      * The pin number that the button is hooked up to.
      */
-    uint8_t buttonPinNum;
+    static uint8_t buttonPinNum;
 
     /**
-     * Whether or not the button was pressed since the last clear
+     * Whether or not the button was pressed since the last clear.
      */
     static bool wasButtonPressed;
 
     /**
-     * Handles the button press interrupt and sets that the button was pressed
+     * Interval timer to detect bouncing on release of the button.
+     */
+    static IntervalTimer* timer;
+
+    /**
+     * Handles the button press interrupt and sets that the button was pressed.
      */
     static void handleButtonPress();
+
+    /**
+     * Confirm that the button press is correct.
+     */
+    static void confirmButtonPress();
 };
