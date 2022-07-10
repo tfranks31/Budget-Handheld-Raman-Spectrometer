@@ -1,8 +1,19 @@
 #include <Arduino.h>
 #include <modules/Joystick.hpp>
 
-bool Joystick::wasButtonPressed;
+/**
+ * The pin number that the button is hooked up to.
+ */
 uint8_t Joystick::buttonPinNum;
+
+/**
+ * Whether or not the button was pressed since the last clear.
+ */
+bool Joystick::wasButtonPressed;
+
+/**
+ * Interval timer to detect bouncing on release of the button.
+ */
 IntervalTimer* Joystick::timer;
 
 Joystick::Joystick(uint8_t xPinNum, uint8_t yPinNum, uint8_t buttonPinNum)
@@ -48,7 +59,7 @@ void Joystick::clearButtonPress()
 
 void Joystick::handleButtonPress()
 {
-    timer->begin(confirmButtonPress, 500);
+    timer->begin(confirmButtonPress, BOUNCE_TIME);
 }
 
 void Joystick::confirmButtonPress()

@@ -4,6 +4,11 @@
 #include <stdint.h>
 
 /**
+ * How long to check if a button press was a bounce or not.
+ */
+#define BOUNCE_TIME 500 // us
+
+/**
  * Class for the joystick module. Also handles tracking joystick button presses.
  */
 class Joystick
