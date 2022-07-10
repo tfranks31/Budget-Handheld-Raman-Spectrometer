@@ -22,7 +22,7 @@
 /**
  * How quickly to increment or decrement the LED brightness.
  */
-#define FADE_RATE 500000    // us
+#define FADE_RATE 50000    // us
 
 /**
  * How quickly to toggle the LED when in error mode.

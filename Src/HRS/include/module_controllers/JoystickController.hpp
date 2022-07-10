@@ -4,6 +4,33 @@
 #include <stdint.h>
 
 /**
+ * The maximum joystick value. 0 will always be the minimum.
+ */
+#define MAX_READING 1023
+
+/**
+ * The value for when a joystick axis is crossing from center to upper range.
+ */
+#define CENTER_UPPER_THRESHOLD (MAX_READING * 5) / 6
+
+/**
+ * The value for when a joystick axis is crossing from center to lower range.
+ */
+#define CENTER_LOWER_THRESHOLD (MAX_READING * 1) / 6
+
+/**
+ * The value for when a joystick axis is crossing from upper to center/lower
+ * range.
+ */
+#define UPPER_LOWER_THRESHOLD (MAX_READING * 4) / 6
+
+/**
+ * The value for when a joystick axis is crossing from lower to center/upper
+ * range.
+ */
+#define LOWER_UPPER_THRESHOLD (MAX_READING * 2) / 6
+
+/**
  * The different horizontal movements performed by the joystick. The first word
  * is the position that the joystick was at initially before the read. The
  * second word is the position that was read. A movement from left to right or
@@ -15,7 +42,7 @@ enum HorizontalMovement
     LEFT_LEFT,
     LEFT_RIGHT,
     CENTER_LEFT,
-    CENTER_CENTER,
+    CENTER_CENTER_H,
     CENTER_RIGHT,
     RIGHT_LEFT,
     RIGHT_RIGHT
@@ -33,10 +60,21 @@ enum VerticalMovement
     UP_UP,
     UP_DOWN,
     CENTER_UP,
-    CENTER_CENTER,
+    CENTER_CENTER_V,
     CENTER_DOWN,
     DOWN_UP,
     DOWN_DOWN
+};
+
+/**
+ * Different joystick positions. Used as states for where a joystick is along
+ * its axes.
+ */
+enum Position
+{
+    UPPER,
+    CENTER,
+    LOWER
 };
 
 /**
@@ -97,10 +135,10 @@ private:
     /**
      * The previous analog X position, used for determining movements.
      */
-    uint16_t previousX;
+    Position previousX;
 
     /**
      * The previous analog Y position, used for determining movements.
      */
-    uint16_t previousY;
+    Position previousY;
 };
