@@ -11,12 +11,12 @@ public:
 
     /**
      * Constructor for the relay module.
-     * @param pinNum The pin number the relay module is hooked up to
+     * @param pinNum The pin number the relay module is hooked up to.
      */
     Relay(uint8_t pinNum);
 
     /**
-     * Initialize the relay module
+     * Initialize the relay module.
      */
     void init();
 
