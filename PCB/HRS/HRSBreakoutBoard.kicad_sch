@@ -1111,7 +1111,7 @@
   (symbol (lib_id "Device:C") (at 196.85 115.57 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 225cd280-da8e-413c-b891-9711d4432d4e)
-    (property "Reference" "C6" (id 0) (at 199.39 110.49 90))
+    (property "Reference" "C6" (id 0) (at 200.66 110.49 90))
     (property "Value" "1.0uF" (id 1) (at 200.66 113.03 90))
     (property "Footprint" "HRS:C_0603_1608Metric" (id 2) (at 193.04 116.5352 0)
       (effects (font (size 1.27 1.27)) hide)
