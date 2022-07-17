@@ -15,16 +15,9 @@ void Relay::init()
 void Relay::turnOn()
 {
     digitalWrite(pinNum, HIGH);
-    isOn = true;
 }
 
 void Relay::turnOff()
 {
     digitalWrite(pinNum, LOW);
-    isOn = false;
-}
-
-bool Relay::getIsOn()
-{
-    return isOn;
 }

@@ -30,18 +30,7 @@ public:
      */
     void turnOff();
 
-    /**
-     * Get whether or not the relay module is on or off.
-     * @returns True is the relay is on, false if it is not.
-     */
-    bool getIsOn();
-
 private:
-
-    /**
-     * Whether or not the relay is on or off. True is on, false is off.
-     */
-    bool isOn;
 
     /**
      * The pin number that the relay is hooked up to.
